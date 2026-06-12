@@ -157,11 +157,6 @@ export function WeekCalendar({
         const hasLift =
           liftCount > 0
 
-        const displayCount =
-          liftCount > 9
-            ? '9'
-            : liftCount
-
         return (
           <button
             type="button"
@@ -170,8 +165,6 @@ export function WeekCalendar({
               onSelectDate(date)
             }
             className={`
-              relative
-
               w-full
               h-18
               flex flex-col
@@ -203,7 +196,16 @@ export function WeekCalendar({
             `}
           >
             <span
-              className="text-[11px] font-medium capitalize"
+              className={`
+                text-[11px]
+                font-medium
+                capitalize
+
+                ${hasLift && !isSelected
+                  ? 'text-(--color-primary)'
+                  : ''
+                }
+              `}
             >
               {date.toLocaleDateString(
                 'fr-FR',
@@ -215,39 +217,20 @@ export function WeekCalendar({
             </span>
 
             <span
-              className="mt-2 text-[18px] font-bold leading-none"
+              className={`
+                mt-2
+                text-[18px]
+                font-bold
+                leading-none
+
+                ${hasLift && !isSelected
+                  ? 'text-(--color-primary)'
+                  : ''
+                }
+              `}
             >
               {date.getDate()}
             </span>
-
-            {hasLift && (
-              <span
-                className={`
-                  absolute
-                  right-1
-                  bottom-1
-
-                  inline-flex
-                  h-4
-                  w-4
-                  items-center
-                  justify-center
-
-                  rounded-full
-
-                  text-[8px]
-                  font-bold
-                  leading-none
-
-                  ${isSelected
-                    ? 'bg-white text-(--color-primary)'
-                    : 'bg-(--color-primary) text-white'
-                  }
-                `}
-              >
-                {displayCount}
-              </span>
-            )}
           </button>
         )
       })}
