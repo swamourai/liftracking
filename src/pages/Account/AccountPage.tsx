@@ -76,7 +76,10 @@ function displayValue(
 
 export function AccountPage() {
   const { showToast } = useToast()
-  const { clearLifts } = useApp()
+  const {
+    clearLifts,
+    lifts,
+  } = useApp()
 
   const [profile, setProfile] =
     useState<ProfileData>(
@@ -98,6 +101,18 @@ export function AccountPage() {
         EMPTY_PROFILE,
       ),
     )
+
+  const hasProfileData =
+    profile.lastName.trim()
+      .length > 0 ||
+    profile.firstName.trim()
+      .length > 0 ||
+    profile.age !== null ||
+    profile.weight !== null
+
+  const canDeleteAccount =
+    hasProfileData ||
+    lifts.length > 0
 
   useEffect(() => {
     function handleStorage(
@@ -392,9 +407,11 @@ export function AccountPage() {
             <p className="text-sm font-semibold text-(--color-text)">v{APP_VERSION}</p>
           </div>
 
-          <TextAction danger onClick={() => setShowDeleteModal(true)}>
-            Supprimer mon compte
-          </TextAction>
+          {canDeleteAccount && (
+            <TextAction danger onClick={() => setShowDeleteModal(true)}>
+              Supprimer mon compte
+            </TextAction>
+          )}
         </Card>
 
       </div>
