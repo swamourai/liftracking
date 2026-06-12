@@ -1,6 +1,6 @@
 import { ChevronLeft } from 'lucide-react'
 
-import logo from '@/assets/images/logo/logo.png'
+import logo from '@/assets/images/logo/logo.webp'
 
 interface Props {
   title?: string
