@@ -7,6 +7,10 @@ const isGitHubActions =
   process.env.GITHUB_ACTIONS ===
   'true'
 
+const isNativeBuild =
+  process.env.VITE_BUILD_TARGET ===
+  'native'
+
 const githubRepository =
   process.env.GITHUB_REPOSITORY
 
@@ -16,8 +20,13 @@ const githubPagesBase =
     ? `/${githubRepository.split('/')[1]}/`
     : '/'
 
+const appBase =
+  isNativeBuild
+    ? './'
+    : githubPagesBase
+
 export default defineConfig({
-  base: githubPagesBase,
+  base: appBase,
 
   plugins: [react(), tailwindcss()],
 
