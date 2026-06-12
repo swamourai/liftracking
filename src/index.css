@@ -1,0 +1,75 @@
+@import "tailwindcss";
+@import "./styles/tokens.css";
+
+:root {
+  font-family: var(
+    --font-family-base
+  );
+
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+button {
+  min-height: var(
+    --control-height
+  );
+}
+
+.control-icon-lg {
+  height: var(
+    --control-height-icon-lg
+  );
+}
+
+.empty-state-card {
+  min-height: var(
+    --empty-state-height
+  );
+
+  border-radius: var(
+    --radius-lg
+  );
+}
+
+
+@keyframes toast-in {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(-20px)
+      scale(0.92);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+.animate-toast-in {
+  animation:
+    toast-in 220ms
+    cubic-bezier(
+      0.16,
+      1,
+      0.3,
+      1
+    );
+}
