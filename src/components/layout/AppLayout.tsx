@@ -22,10 +22,10 @@ export function AppLayout({
 
   return (
     <div
-      className="bg-gradient-to-b from-(--color-bg-soft) to-(--color-bg)"
+      className="relative h-dvh overflow-hidden bg-linear-to-b from-(--color-bg-soft) to-(--color-bg)"
     >
       <div
-        className="sticky top-0 z-50 border-b border-black/5 bg-(--color-surface)/70 backdrop-blur-xl"
+        className="fixed inset-x-0 top-0 z-50 border-b border-black/5 bg-(--color-surface)/70 backdrop-blur-xl"
       >
         <div
           className="mx-auto w-full max-w-screen-sm py-3"
@@ -39,7 +39,7 @@ export function AppLayout({
       </div>
 
       <main
-        className="mx-auto w-full max-w-screen-sm pb-28"
+        className="mx-auto h-full w-full max-w-screen-sm overflow-y-auto overscroll-y-contain pt-16 pb-28"
       >
         {children}
       </main>

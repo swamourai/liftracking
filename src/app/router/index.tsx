@@ -5,6 +5,14 @@ import { AppErrorPage } from '@/pages/Error/AppErrorPage'
 const errorElement =
   <AppErrorPage />
 
+const baseUrl =
+  import.meta.env.BASE_URL
+
+const routerBasename =
+  baseUrl.startsWith('/')
+    ? baseUrl
+    : '/'
+
 export const router = createBrowserRouter(
   [
     {
@@ -108,6 +116,6 @@ export const router = createBrowserRouter(
   ],
   {
     basename:
-      import.meta.env.BASE_URL,
+      routerBasename,
   },
 )
